@@ -1,45 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="976f64ba-28bf-4ba4-8841-5cdf8c27864c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/15re_man.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/btn-up.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/dentist.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/dolgaya.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/fon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/fonts-tildasans.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/healthy-tooth.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/malchevskaya.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/pictures/dentist_fon.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/pictures/tooth_ico.avif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/pictures/whatsapp_button.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/ruble.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/sabich.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/sert1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/sert2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/sert3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/sert4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/sert5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/sert6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/sert7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/sert8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/shapovalova.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/tilda-animation-2.0.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/tilda-blocks-page34543861.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/tilda-cover-1.0.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/tilda-grid-3.0.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/tilda-popup-1.1.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/tilda-slds-1.4.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/tilda-zoom-2.0.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/tildacopy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/vasileva.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/germed_files/zhuravleva.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/itc-slider.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/itc-slider.js" afterDir="false" />
+    <list default="true" id="976f64ba-28bf-4ba4-8841-5cdf8c27864c" name="Changes" comment="da">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,8 +58,16 @@
       <workItem from="1678341838309" duration="26000" />
       <workItem from="1678341891418" duration="10571000" />
       <workItem from="1678357718085" duration="9362000" />
-      <workItem from="1678444385903" duration="19922000" />
+      <workItem from="1678444385903" duration="20610000" />
     </task>
+    <task id="LOCAL-00001" summary="da">
+      <created>1678556442253</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1678556442253</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,5 +83,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="da" />
+    <option name="LAST_COMMIT_MESSAGE" value="da" />
   </component>
 </project>
