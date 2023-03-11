@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=782c76e0-ba1c-4745-997a-aea5d3ee2733&lang=ru_RU"
+            type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        // Функция ymaps.ready() будет вызвана, когда
+        // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+        ymaps.ready(init);
+
+        function init() {
+            // Создание карты.
+            var myMap = new ymaps.Map("map", {
+                // Координаты центра карты.
+                // Порядок по умолчанию: «широта, долгота».
+                // Чтобы не определять координаты центра карты вручную,
+                // воспользуйтесь инструментом Определение координат.
+                center: [59.981573, 30.393752],
+                // Уровень масштабирования. Допустимые значения:
+                // от 0 (весь мир) до 19.
+                zoom: 14
+            });
+            myGeoObject = new ymaps.GeoObject({
+                // Описание геометрии.
+                geometry: {
+                    type: "Point",
+                    coordinates: [59.982644, 30.394002]
+                },
+                // Свойства.
+                properties: {
+                    // Контент метки.
+                    hintContent: 'Мы тут'
+                }
+            });
+            myMap.geoObjects
+                .add(myGeoObject);
+        }
+    </script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title>Гермед</title>
+    <link href="itc-slider.css" rel="stylesheet">
+    <script defer src="itc-slider.js"></script>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+            'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+            'Segoe UI Symbol';
+        }
+
+        .container {
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                margin: 0 auto;
+                padding: 0;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1050px;
+                margin: 0 auto;
+            }
+        }
+
+        .itc-slider {
+            overflow: hidden;
+            padding-bottom: 35px;
+        }
+
+        .itc-slider__wrapper {
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+
+        @media (min-width: 768px) {
+            .itc-slider__item {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .itc-slider__item {
+                flex: 0 0 33.3333333333%;
+                max-width: 33.3333333333%;
+            }
+        }
+
+        .card {
+            position: relative;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .card__header {
+            position: relative;
+        }
+
+        .card__img {
+            display: block;
+            height: auto;
+            max-width: 100%;
+        }
+
+        .card__section {
+            position: absolute;
+            bottom: 6px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 6px 10px;
+            font-size: 14px;
+            border-radius: 12px;
+            line-height: 1;
+        }
+
+        .card__title {
+            background: #fafafa;
+            color: #424242;
+            white-space: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1.3;
+            padding: 10px 15px;
+            margin: 0;
+            height: 72px;
+        }
+
+        .card__footer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background: #fafafa;
+            padding: 10px 15px 15px;
+            color: #616161;
+        }
+
+        .card__photo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .card__author {
+            margin-left: 6px;
+        }
+
+        .card__icon {
+            margin-left: auto;
+            width: 18px;
+            max-height: 20px;
+        }
+
+        .card__views {
+            margin-left: 6px;
+        }
+
+        .itc-slider__btn {
+            background-color: unset;
+        }
+
+        .itc-slider__btn:hover,
+        .itc-slider__btn:focus {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        .itc-slider__indicators {
+            bottom: 0;
+        }
+
+        .itc-slider__indicator {
+            background-color: #eee;
+        }
+
+        .itc-slider__indicator_active {
+            background-color: #757575;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Гермед">
+    <meta property="og:type" content="website">
+    <meta property="og:image"
+          content="germed_files/pictures/dentist_fon.jpg">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="shortcut icon" href="germed_files/pictures/tooth_ico.avif">
+    <!-- Assets -->
+    <link rel="stylesheet" href="./germed_files/tilda-grid-3.0.min.css" type="text/css" media="all"
+          onerror="this.loaderr=&#39;y&#39;;">
+    <link rel="stylesheet" href="./germed_files/tilda-blocks-page34543861.min.css" type="text/css" media="all"
+          onerror="this.loaderr=&#39;y&#39;;">
+    <link rel="stylesheet" href="./germed_files/tilda-animation-2.0.min.css" type="text/css" media="all"
+          onerror="this.loaderr=&#39;y&#39;;">
+    <link rel="stylesheet" href="./germed_files/tilda-cover-1.0.min.css" type="text/css" media="all"
+          onerror="this.loaderr=&#39;y&#39;;">
+    <link rel="stylesheet" href="./germed_files/tilda-slds-1.4.min.css" type="text/css" media="all"
+          onload="this.media=&#39;all&#39;;" onerror="this.loaderr=&#39;y&#39;;">
+    <noscript>
+        <link rel="stylesheet" href="https://static.tildacdn.info/css/tilda-slds-1.4.min.css" type="text/css"
+              media="all"/>
+    </noscript>
+    <link rel="stylesheet" href="./germed_files/tilda-popup-1.1.min.css" type="text/css" media="all"
+          onload="this.media=&#39;all&#39;;" onerror="this.loaderr=&#39;y&#39;;">
+    <noscript>
+        <link rel="stylesheet" href="https://static.tildacdn.info/css/tilda-popup-1.1.min.css" type="text/css"
+              media="all"/>
+    </noscript>
+    <link rel="stylesheet" href="./germed_files/tilda-zoom-2.0.min.css" type="text/css" media="all"
+          onload="this.media=&#39;all&#39;;" onerror="this.loaderr=&#39;y&#39;;">
+    <noscript>
+        <link rel="stylesheet" href="https://static.tildacdn.info/css/tilda-zoom-2.0.min.css" type="text/css"
+              media="all"/>
+    </noscript>
+    <link rel="stylesheet" href="./germed_files/fonts-tildasans.css" type="text/css" media="all"
+          onerror="this.loaderr=&#39;y&#39;;">
+
+    <style>
+        .t-skiplink {
+            position: absolute;
+            top: 0;
+            left: 20px;
+            z-index: 1;
+            padding: 8px 10px;
+            font-family: "Arial", sans-serif;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #c7d2e9;
+            border: 1px solid #c7d2e9;
+            border-radius: 8px;
+            transform: translateY(-200px);
+            transition: transform .3s ease;
+        }
+
+        .t-skiplink:focus {
+            transform: translateY(20px);
+        }
+
+        #allrecords a.t-skiplink {
+            color: #000000;
+        }</style>
+    <style>[_nghost-bao-c52] {
+        font-family: Open Sans, sans-serif;
+        color: #121212
+    }</style>
+    <style type="text/css">div.t-records {
+        opacity: 1;
+    }</style>
+</head>
+<body class="t-body" style="margin: 0px;">
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true" style="position: fixed">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Запишитесь на приём сейчас</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body"
+                 style="display: grid; place-items: center;gap: 20px; grid-template-columns: auto auto auto;">
+                <div class="whatsapp"><a aria-label="Chat on WhatsApp" href="https://wa.me/+79990619222"> <img
+                        alt="Chat on WhatsApp" src="germed_files/pictures/whatsapp_button.svg" style="height: 30px; width: 30px"/> </a>
+                </div>
+                <div class="whatsapp"><a aria-label="Chat on WhatsApp" href="tel:+79990619222">
+                    +7 (999) 061-92-22</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<svg style="display: none;" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="eye" viewBox="0 0 16 16">
+        <path
+                d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+        <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+    </symbol>
+</svg>
+
+<!--allrecords-->
+<div id="allrecords" class="t-records" data-hook="blocks-collection-content-node"
+     data-tilda-page-id="34543861" data-tilda-formskey="ba03dc450bf385525356e91116900396" data-tilda-lazy="yes"><a
+        href="" class="t-skiplink" aria-label="Skip to main content">To main
+    content</a>
+    <div id="rec558071390" class="r t-rec" style=" " data-animationappear="off" data-record-type="257"><!-- T228 -->
+        <div id="nav558071390marker"></div>
+
+        <style>
+            .tmenu-mobile {
+            background-color: #111;
+            display: none;
+            width: 100%;
+            top: 0;
+            z-index: 990;
+        }
+
+        .tmenu-mobile_positionfixed {
+            position: fixed;
+        }
+
+        .tmenu-mobile__text {
+            color: #fff;
+        }
+
+        .tmenu-mobile__container {
+            min-height: 64px;
+            padding: 20px;
+            position: relative;
+            box-sizing: border-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+
+        .tmenu-mobile__list {
+            display: block;
+        }
+
+        .tmenu-mobile__burgerlogo {
+            display: inline-block;
+            font-size: 24px;
+            font-weight: 400;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        .tmenu-mobile__imglogo {
+            height: auto;
+            display: block;
+            max-width: 300px !important;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0 auto;
+        }
+
+        @media screen and (max-width: 980px) {
+            .tmenu-mobile__menucontent_hidden {
+                display: none;
+                height: 100%;
+            }
+
+            .tmenu-mobile {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 980px) {
+            #rec558071390 .t-menuburger {
+                -webkit-order: 1;
+                -ms-flex-order: 1;
+                order: 1;
+            }
+        }</style>
+        <div id="nav558071390" class="t228 t228__positionabsolute tmenu-mobile__menucontent_hidden"
+             style="background-color: rgba(0,0,0,0.50); " data-bgcolor-hex="#000000"
+             data-bgcolor-rgba="rgba(0,0,0,0.50)" data-navmarker="nav558071390marker" data-appearoffset=""
+             data-bgopacity-two="" data-menushadow="" data-bgopacity="0.50" data-menu-items-align="center"
+             data-menu="yes">
+            <div class="t228__maincontainer " style="">
+                <div class="t228__padding40px"></div>
+                <div class="t228__leftside" style="min-width: 158px;">
+                    <div class="t228__leftcontainer"><a href="http://tilda.cc/" class="t228__imgwrapper"
+                                                        style="color:#ffffff;">
+                        <div class="t228__logo t-title" field="title" style="color:#ffffff;">Стомотология Гермед</div>
+                    </a></div>
+                </div>
+                <div class="t228__centerside">
+                    <nav class="t228__centercontainer" aria-label="Основные разделы на странице">
+                        <ul class="t228__list" role="menubar" aria-label="Основные разделы на странице">
+                            <li class="t228__list_item" role="none" style="padding:0 25px 0 0;"><a
+                                    class="t-menu__link-item" href="#services" role="menuitem"
+                                    tabindex="0" data-menu-submenu-hook="" data-menu-item-number="1"
+                                    style="color:#ffffff;font-weight:600;">Услуги</a></li>
+                            <li class="t228__list_item" role="none" style="padding:0 25px;"><a class="t-menu__link-item"
+                                                                                               href="#doctors"
+                                                                                               role="menuitem"
+                                                                                               tabindex="0"
+                                                                                               data-menu-submenu-hook=""
+                                                                                               data-menu-item-number="2"
+                                                                                               style="color:#ffffff;font-weight:600;">Врачи</a>
+                            </li>
+                            <li class="t228__list_item" role="none" style="padding:0 0 0 25px;"><a
+                                    class="t-menu__link-item" href="#reviews" role="menuitem"
+                                    tabindex="0" data-menu-submenu-hook="" data-menu-item-number="3"
+                                    style="color:#ffffff;font-weight:600;">Отзывы</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="t228__rightside" style="min-width: 158px;">
+                    <div class="t228__rightcontainer">
+                        <div class="t228__right_buttons">
+                            <div class="t228__right_buttons_wrap">
+                                <div class="t228__right_buttons_but"><a href="tel:+79990619222" target=""
+                                                                        class="t-btn t-btn_md "
+                                                                        style="color:#000000;background-color:#ffffff;border-radius:20px; -moz-border-radius:20px; -webkit-border-radius:20px;">
+                                    <table role="presentation" style="width:100%; height:100%;">
+                                        <tbody>
+                                        <tr>
+                                            <td>+7 (999) 061-92-22</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="t228__padding40px"></div>
+            </div>
+        </div>
+        <style>@media screen and (max-width: 980px) {
+            #rec558071390 .t228 {
+                position: static;
+            }
+        }</style>
+
+        <!--[if IE 8]>
+        <style>#rec558071390 .t228 {
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#D9000000', endColorstr='#D9000000');
+        }</style><![endif]-->
+        <style>#rec558071390 .t-menu__link-item {
+            outline: none;
+        }
+
+        #rec558071390 .t-menu__link-item:focus-visible {
+            outline: 5px auto rgba(0, 150, 255, 1);
+            -webkit-outline: 5px auto rgba(0, 150, 255, 1);
+            -moz-outline: 5px auto rgba(0, 150, 255, 1);
+            -ms-outline: 5px auto rgba(0, 150, 255, 1);
+            -o-outline: 5px auto rgba(0, 150, 255, 1);
+        }
+
+        @supports (overflow:-webkit-marquee) and (justify-content:inherit) {
+            #rec558071390 .t-menu__link-item,
+            #rec558071390 .t-menu__link-item.t-active {
+                opacity: 1 !important;
+            }
+        }</style>
+    </div>
+    <div id="t-main-content"></div>
+    <div id="rec558071391" class="r t-rec t-rec_pt_0" style="padding-top:0px; " data-animationappear="off"
+         data-record-type="213"><!-- cover -->
+        <div class="t-cover" id="recorddiv558071391" bgimgfield="img"
+             style="background-image: url(&quot;https://static.tildacdn.info/tild3164-3531-4536-b963-393433303230/-/resize/20x/dentist-with-dentist.jpg&quot;); height: 100vh;">
+            <div class="t-cover__carrier loaded" id="coverCarry558071391" data-content-cover-id="558071391"
+                 data-content-cover-bg="https://static.tildacdn.info/tild3164-3531-4536-b963-393433303230/dentist-with-dentist.jpg"
+                 data-display-changed="true" data-content-cover-height="100vh" data-content-cover-parallax=""
+                 style="height: 100vh; background-attachment: scroll; background-image: url(&quot;https://thumb.tildacdn.com/tild3164-3531-4536-b963-393433303230/-/format/webp/dentist-with-dentist.jpg&quot;);"
+                 itemscope="" itemtype="http://schema.org/ImageObject">
+                <meta itemprop="image"
+                      content="https://static.tildacdn.info/tild3164-3531-4536-b963-393433303230/dentist-with-dentist.jpg">
+            </div>
+            <div class="t-cover__filter"
+                 style="height:100vh;background-color:#000;filter:alpha(opacity:40);KHTMLOpacity:0.4;MozOpacity:0.4;opacity:0.4;"></div>
+            <div class="t-container">
+                <div class="t-col t-col_7">
+                    <div class="t-cover__wrapper t-valign_middle" style="height:100vh; position: relative;z-index: 1;">
+                        <div class="t189">
+                            <div data-hook-content="covercontent">
+                                <div class="t189__wrapper">
+                                    <div class="t189__title t-title" style="" field="title">
+                                        <div style="font-size: 62px; line-height: 62px;" data-customstyle="yes">Мы
+                                            подарим<br>вам улыбку!
+                                        </div>
+                                    </div>
+                                    <div class="t189__descr t-descr t-descr_sm" style="" field="descr">Почувствуйте
+                                        разницу с нашими опытными стоматологами
+                                    </div>
+                                    <div style="margin-top:40px; margin-bottom:20px;">
+                                        <div class="t-btnwrapper"><a data-toggle="modal" data-target="#exampleModalCenter"
+                                                                     class="t-btn t-btn_md"
+                                                                     style="color:#000000;background-color:#f5e503;">
+                                            <table role="presentation" style="width:100%; height:100%;">
+                                                <tbody>
+                                                <tr>
+
+                                                    <td>
+                                                        ЗАПИСАТЬСЯ
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </a></div>
+                                        <div class="t-btnwrapper"><a data-toggle="modal" data-target="#exampleModalCenter" href="" target=""
+                                                                     class="t-btn t-btn_md "
+                                                                     style="color:#ffffff;border:2px solid #ffffff;">
+                                            <table role="presentation" style="width:100%; height:100%;">
+                                                <tbody>
+                                                <tr>
+                                                    <td>Скидка 10% на первое посещение</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="rec558071393" class="r t-rec r_showed r_anim" style=" " data-record-type="215"><a name="service"
+                                                                                               style="font-size:0;"></a>
+    </div>
+    <div id="rec558071394" class="r t-rec t-rec_pt_60 t-rec_pb_60"
+         style="padding-top:60px;padding-bottom:60px;background-color:#f5f5f5; " data-record-type="490"
+         data-bg-color="#f5f5f5" data-animationappear="off"><!-- t490 -->
+        <div class="t490">
+            <div class="t-section__container t-container">
+                <div class="t-col t-col_12">
+                    <div class="t-section__topwrapper t-align_center">
+                        <div class="t-section__title t-title t-title_xs" field="btitle">Безопасное лечение и
+                            премиум-материалы
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="t490__container t-container">
+                <li class="t-cards__col t490__col t-col t-col_6 t-align_center t-item"><img class="t490__img t-img"
+                                                                                            src="./germed_files/15re_man.svg"
+                                                                                            imgfield="li_img__1476968690512"
+                                                                                            style="width:90px;" alt="">
+                    <div class="t490__wrappercenter ">
+                        <div class="t-cards__title t-heading t-heading_md" field="li_title__1476968690512" style="">
+                            Надёжные партнёры
+                        </div>
+                        <div class="t-descr t-descr_xs" style="" field="li_descr__1476968690512">Лечебные и
+                            пломбировочные материалы от ведущих производителей <br>
+                            <ul style="margin-right: 90%">
+                                <li>Voco</li>
+                                <li>Keer</li>
+                                <li>Dentsply</li>
+                                <li>Septodont</li>
+                                <li>3M</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="t-cards__col t490__col t-col t-col_6 t-align_center t-item"><img
+                        class="t490__img t-img loaded" src="./germed_files/healthy-tooth.png"
+                        data-original="https://static.tildacdn.info/tild6461-3063-4230-b430-346164313438/healthy-tooth.png"
+                        imgfield="li_img__1509711759928" style="width:90px;" alt="">
+                    <div class="t490__wrappercenter ">
+                        <div class="t-cards__title t-heading t-heading_md" field="li_title__1509711759928" style="">
+                            Протоколы лечения
+                        </div>
+                        <div class="t-descr t-descr_xs" style="" field="li_descr__1509711759928">
+                            <ul>
+                                <li style="text-align: left;">Планируем лечение на базе доказательной медицины с
+                                    научно-доказательным обоснованием
+                                </li>
+                                <li style="text-align: left;">После каждого пациента кабинет подвергается тщательной
+                                    обработке
+                                </li>
+                                <li style="text-align: left;">Инструменты проходят все этапы стерилизации, а во время
+                                    приема вскрываются новые стерильные инструменты
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <div class="t-clear t490__separator" style=""></div>
+                <li class="t-cards__col t490__col t-col t-col_6 t-align_center t-item"><img
+                        class="t490__img t-img loaded" src="./germed_files/dentist.png"
+                        data-original="https://static.tildacdn.info/tild3063-6464-4435-b237-643935366665/dentist.png"
+                        imgfield="li_img__1476968700508" style="width:90px;" alt="">
+                    <div class="t490__wrappercenter ">
+                        <div class="t-cards__title t-heading t-heading_md" field="li_title__1476968700508" style="">
+                            Врачи - профессионалы
+                        </div>
+                        <div class="t-descr t-descr_xs" style="" field="li_descr__1476968700508">У нас работает только
+                            высококвалифицированный медицинский персонал с большим опытом
+                        </div>
+                    </div>
+                </li>
+                <li class="t-cards__col t490__col t-col t-col_6 t-align_center t-item"><img
+                        class="t490__img t-img loaded" src="./germed_files/ruble.png"
+                        data-original="https://static.tildacdn.info/tild3331-3263-4939-b531-333838653434/ruble.png"
+                        imgfield="li_img__1476968722790" style="width:90px;" alt="">
+                    <div class="t490__wrappercenter ">
+                        <div class="t-cards__title t-heading t-heading_md" field="li_title__1476968722790" style="">
+                            Доступные цены
+                        </div>
+                        <div class="t-descr t-descr_xs" style="" field="li_descr__1476968722790">Мы заботимся о наших
+                            пациентах и
+                            предоставляем лучшие условия для каждого
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div id="rec558299395" class="r t-rec t-rec_pt_75 t-rec_pb_90" style="padding-top:75px;padding-bottom:90px; "
+         data-animationappear="off" data-record-type="849"><!-- t849-->
+        <div class="t849">
+            <div class="t-section__container t-container">
+                <div class="t-col t-col_12">
+                    <div class="t-section__topwrapper t-align_center">
+                        <a name="services"></a>
+                        <div class="t-section__title t-title t-title_xs" field="btitle">Наши услуги</div>
+                        <div class="t-section__descr t-descr t-descr_xl t-margin_auto" field="bdescr">Чтобы ознакомиться
+                            с основными услугами, нажмите на интересующий раздел
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="t-container">
+                <div class="t-col t-col_8 t-prefix_2">
+                    <div class="t849__accordion" data-accordion="false">
+                        <div class="t849__wrapper">
+                            <div class="t849__header " style="border-top: 1px solid #eee;">
+                                <button type="button" class="t849__trigger-button" data-toggle="collapse"
+                                        data-target="#multiCollapseExample1" aria-expanded="false"
+                                        aria-controls="multiCollapseExample1"><span class="t849__title t-name t-name_xl"
+                                                                                    field="li_title__1531218535874"
+                                                                                    style="">Терапия</span><span
+                                        class="t849__icon"><span class="t849__lines"><svg role="presentation"
+                                                                                          focusable="false" width="24px"
+                                                                                          height="24px"
+                                                                                          viewBox="0 0 24 24"
+                                                                                          xmlns="http://www.w3.org/2000/svg"
+                                ><g
+                                        stroke="none" stroke-width="2px" fill="none" fill-rule="evenodd"
+                                        stroke-linecap="square"><g transform="translate(1.000000, 1.000000)"
+                                                                   stroke="#222222"><path d="M0,11 L22,11"></path><path
+                                        d="M11,0 L11,22"></path></g></g></svg></span><span class="t849__circle"
+                                                                                           style="background-color: transparent;"></span></span><span
+                                        class="t849__icon t849__icon-hover"><span class="t849__lines"><svg
+                                        role="presentation" focusable="false" width="24px" height="24px"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                ><g stroke="none" stroke-width="2px"
+                                    fill="none" fill-rule="evenodd"
+                                    stroke-linecap="square"><g
+                                        transform="translate(1.000000, 1.000000)" stroke="#ffffff"><path
+                                        d="M0,11 L22,11"></path><path d="M11,0 L11,22"></path></g></g></svg></span><span
+                                        class="t849__circle" style="background-color: #1f5bff"></span></span></button>
+                            </div>
+
+                            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                                <div class="t849__textwrapper">
+                                    <div class="t849__text t-descr t-descr_sm" field="li_descr__1531218535874" style="">
+                                        <ul>
+                                            <li>Консультация стоматолога-терапевта</li>
+                                            <li>Лечение кариеса</li>
+                                            <li>Профессианальная чистка зубов Air-flow</li>
+                                            <li>Глубокое фторирование</li>
+                                            <li>Реминерализующая терапия</li>
+                                            <li>Отбеливание</li>
+                                            <li>Лечение пульпита, переодонтита</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-col t-col_8 t-prefix_2">
+                    <div class="t849__accordion" data-accordion="false">
+                        <div class="t849__wrapper">
+                            <div class="t849__header " style="border-top: 1px solid #eee;">
+                                <button type="button" class="t849__trigger-button" data-toggle="collapse"
+                                        data-target="#multiCollapseExample2" aria-expanded="false"
+                                        aria-controls="multiCollapseExample2"><span class="t849__title t-name t-name_xl"
+                                                                                    field="li_title__1531218331971"
+                                                                                    style="">Хирургия и имплантация</span><span
+                                        class="t849__icon"><span class="t849__lines"><svg role="presentation"
+                                                                                          focusable="false" width="24px"
+                                                                                          height="24px"
+                                                                                          viewBox="0 0 24 24"
+                                                                                          xmlns="http://www.w3.org/2000/svg"
+                                ><g
+                                        stroke="none" stroke-width="2px" fill="none" fill-rule="evenodd"
+                                        stroke-linecap="square"><g transform="translate(1.000000, 1.000000)"
+                                                                   stroke="#222222"><path d="M0,11 L22,11"></path><path
+                                        d="M11,0 L11,22"></path></g></g></svg></span><span class="t849__circle"
+                                                                                           style="background-color: transparent;"></span></span><span
+                                        class="t849__icon t849__icon-hover"><span class="t849__lines"><svg
+                                        role="presentation" focusable="false" width="24px" height="24px"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                ><g stroke="none" stroke-width="2px"
+                                    fill="none" fill-rule="evenodd"
+                                    stroke-linecap="square"><g
+                                        transform="translate(1.000000, 1.000000)" stroke="#ffffff"><path
+                                        d="M0,11 L22,11"></path><path d="M11,0 L11,22"></path></g></g></svg></span><span
+                                        class="t849__circle" style="background-color: #1f5bff"></span></span></button>
+                            </div>
+                            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                                <div class="t849__textwrapper">
+                                    <div class="t849__text t-descr t-descr_sm" field="li_descr__1531218331971" style="">
+                                        <ul>
+                                            <li style="text-align: left;">Консультация стоматолога-хирурга</li>
+                                            <li style="text-align: left;">Удаление зубов</li>
+                                            <li style="text-align: left;">Имплантация системы Ankylos (Германия)</li>
+                                            <li style="text-align: left;">Имплантация системы Dentium (Южная Корея)</li>
+                                            <li style="text-align: left;">Имплантация системы Osstem (Южная Корея)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-col t-col_8 t-prefix_2">
+                    <div class="t849__accordion" data-accordion="false">
+                        <div class="t849__wrapper">
+                            <div class="t849__header " style="border-top: 1px solid #eee;">
+                                <button type="button" class="t849__trigger-button" data-toggle="collapse"
+                                        data-target="#multiCollapseExample3" aria-expanded="false"
+                                        aria-controls="multiCollapseExample3"><span class="t849__title t-name t-name_xl"
+                                                                                    field="li_title__1531218700960"
+                                                                                    style="">Протезирование</span><span
+                                        class="t849__icon"><span class="t849__lines"><svg role="presentation"
+                                                                                          focusable="false" width="24px"
+                                                                                          height="24px"
+                                                                                          viewBox="0 0 24 24"
+                                                                                          xmlns="http://www.w3.org/2000/svg"
+                                ><g
+                                        stroke="none" stroke-width="2px" fill="none" fill-rule="evenodd"
+                                        stroke-linecap="square"><g transform="translate(1.000000, 1.000000)"
+                                                                   stroke="#222222"><path d="M0,11 L22,11"></path><path
+                                        d="M11,0 L11,22"></path></g></g></svg></span><span class="t849__circle"
+                                                                                           style="background-color: transparent;"></span></span><span
+                                        class="t849__icon t849__icon-hover"><span class="t849__lines"><svg
+                                        role="presentation" focusable="false" width="24px" height="24px"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                ><g stroke="none" stroke-width="2px"
+                                    fill="none" fill-rule="evenodd"
+                                    stroke-linecap="square"><g
+                                        transform="translate(1.000000, 1.000000)" stroke="#ffffff"><path
+                                        d="M0,11 L22,11"></path><path d="M11,0 L11,22"></path></g></g></svg></span><span
+                                        class="t849__circle" style="background-color: #1f5bff"></span></span></button>
+                            </div>
+                            <div class="collapse multi-collapse" id="multiCollapseExample3">
+                                <div class="t849__textwrapper">
+                                    <div class="t849__text t-descr t-descr_sm" field="li_descr__1531218700960" style="">
+                                        <ul>
+                                            <li>Консультация стоматолога-ортопеда</li>
+                                            <li>Коронка металлокерамическая&nbsp;(Германия)</li>
+                                            <li>Изготовление съемного протеза</li>
+                                            <li>Восстановление зуба на штифте</li>
+                                            <li>Прямой виниринг</li>
+                                            <li>Виниры</li>
+                                            <li>Шинирование</li>
+                                            <li>Штампованная коронка</li>
+                                            <li>Телескопическая коронка</li>
+                                            <li>Пластмассовая коронка</li>
+                                            <li>Цельнолитая коронка</li>
+                                            <li>керамическая коронка на основе оксида циркония</li>
+                                            <li>Пластмассовый съемный протез</li>
+                                            <li>Микропротезирование </li>
+                                            <li>Мостовидный протез </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="t-col t-col_8 t-prefix_2">
+                    <div class="t849__accordion" data-accordion="false">
+                        <div class="t849__wrapper">
+                            <div class="t849__header " style="border-top: 1px solid #eee;">
+                                <button type="button" class="t849__trigger-button" data-toggle="collapse"
+                                        data-target="#multiCollapseExample4" aria-expanded="false"
+                                        aria-controls="multiCollapseExample4"><span class="t849__title t-name t-name_xl"
+                                                                                    field="li_title__1531218625139"
+                                                                                    style="">Детская стоматология</span><span
+                                        class="t849__icon"><span class="t849__lines"><svg role="presentation"
+                                                                                          focusable="false" width="24px"
+                                                                                          height="24px"
+                                                                                          viewBox="0 0 24 24"
+                                                                                          xmlns="http://www.w3.org/2000/svg"
+                                ><g
+                                        stroke="none" stroke-width="2px" fill="none" fill-rule="evenodd"
+                                        stroke-linecap="square"><g transform="translate(1.000000, 1.000000)"
+                                                                   stroke="#222222"><path d="M0,11 L22,11"></path><path
+                                        d="M11,0 L11,22"></path></g></g></svg></span><span class="t849__circle"
+                                                                                           style="background-color: transparent;"></span></span><span
+                                        class="t849__icon t849__icon-hover"><span class="t849__lines"><svg
+                                        role="presentation" focusable="false" width="24px" height="24px"
+                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                ><g stroke="none" stroke-width="2px"
+                                    fill="none" fill-rule="evenodd"
+                                    stroke-linecap="square"><g
+                                        transform="translate(1.000000, 1.000000)" stroke="#ffffff"><path
+                                        d="M0,11 L22,11"></path><path d="M11,0 L11,22"></path></g></g></svg></span><span
+                                        class="t849__circle" style="background-color: #1f5bff"></span></span></button>
+                            </div>
+                            <div class="collapse multi-collapse" id="multiCollapseExample4">
+                                <div class="t849__textwrapper">
+                                    <div class="t849__text t-descr t-descr_sm" field="li_descr__1531218625139" style="">
+                                        <ul>
+                                            <li>Лечение кариеса временных зубов</li>
+                                            <li>Лечение пульпитов временных зубов</li>
+                                            <li>Лечение периодонтитов временных зубов</li>
+                                            <li>Удаление временных зубов</li>
+                                            <li>Профессиональная детская чистка</li>
+                                            <li>Герметизация фиссур </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="t849__border" style="height: 1px; background-color: #eee;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cover -->
+    <div class="t-cover" id="recorddiv558071395" bgimgfield="img"
+         style=" height: 560px; background-image: url(germed_files/fon.jpg)">
+
+        <div class="t-cover__filter"
+             style="height:560px;background-image: -moz-linear-gradient(top, rgba(0,0,0,0.80), rgba(0,0,0,0.90));background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.80), rgba(0,0,0,0.90));background-image: -o-linear-gradient(top, rgba(0,0,0,0.80), rgba(0,0,0,0.90));background-image: -ms-linear-gradient(top, rgba(0,0,0,0.80), rgba(0,0,0,0.90));background-image: linear-gradient(top, rgba(0,0,0,0.80), rgba(0,0,0,0.90));filter: progid:DXImageTransform.Microsoft.gradient(startColorStr=&#39;#33000000&#39;, endColorstr=&#39;#19000000&#39;);"></div>
+        <div class="t-container">
+            <div class="t581__title t-title t-title_sm t-margin_auto t-animate_wait"
+                 data-animate-style="fadeinup" data-animate-group="yes" data-animate-order="1"
+                 style="transition-delay: 0s; margin-top: 150px" field="title">Запишитесь сейчас
+            </div>
+            <div class="t581__descr t-descr t-descr_xl t-margin_auto" style="max-width:600px;"
+                 field="descr">Сделайте шаг к здоровой улыбке!
+            </div>
+            <div class="t581__buttons">
+                <div class="t581__buttons-wrapper t-margin_auto">
+                    <div class="t-animate t-animate_wait" data-animate-style="fadein"
+                         data-animate-group="yes" data-animate-order="5"
+                         data-animate-delay="0.3" style="transition-delay: 0.3s;">
+                        <svg role="presentation" class="t581__arrow-icon_mobile"
+                             style="fill:#ffffff;" xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 35 70">
+                            <path d="M30.6 47.5c-.6-.5-1.6-.4-2.1.2L19 59.6V5.5c0-.8-.7-1.5-1.5-1.5S16 4.7 16 5.5v54.1L6.5 47.7c-.6-.6-1.5-.7-2.1-.2-.7.5-.8 1.5-.3 2.1l12.2 15.2c.3.4.7.6 1.2.6s.9-.2 1.2-.6l12.2-15.2c.5-.6.4-1.6-.3-2.1z"></path>
+                        </svg>
+                        <svg role="presentation" class="t581__arrow-icon "
+                             style="fill:#ffffff; " xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 80 180">
+                            <path d="M54.1 108c-.5 0-.9-.2-1.2-.6-.5-.7-.3-1.6.4-2.1 1.5-1 9.5-5.5 14.6-8.3-17.4-.5-31.3-7.3-41.3-20C9.9 55.7 9.5 24.2 14.2 3.7c.2-.8 1-1.3 1.8-1.1.8.2 1.3 1 1.1 1.8-4.6 19.9-4.2 50.3 11.8 70.8 9.5 12.2 23 18.6 39.9 18.9h.3l-3.2-4c-1.4-1.7-2.7-3.3-4.1-5.1-.7-.9-1.5-1.9-2.3-2.9-.5-.6-.4-1.6.2-2.1.6-.5 1.6-.4 2.1.2 0 0 0 .1.1.1l6.4 7.9c.5.6.9 1.1 1.4 1.7 1.5 1.8 3.1 3.6 4.3 5.5 0 .1.1.1.1.2.1.2.1.3.2.5v.3c0 .2 0 .3-.1.5 0 .1-.1.1-.1.2-.1.2-.2.3-.3.4-.1.1-.2.1-.3.2 0 0-.1 0-.2.1-.9.4-16 8.6-18.2 10.1-.4 0-.7.1-1 .1z"></path>
+                        </svg>
+                    </div>
+                    <div class="t581__buttons-flex"><a data-toggle="modal" data-target="#exampleModalCenter"
+                                                       class="t581__btn t-btn t-btn_md "
+                                                       style="color:#ffffff;background-color:#f5914f;border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;"
+                                                       data-btneffects-first="btneffects-ripple">
+                        <table role="presentation" style="width:100%; height:100%;">
+                            <tbody>
+                            <tr>
+                                <td>ЗАПИСАТЬСЯ</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="t-btn_effects"></div>
+                    </a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>#rec558071395 .t-btn[data-btneffects-first],
+    #rec558071395 .t-btn[data-btneffects-second],
+    #rec558071395 .t-btn[data-btneffects-third],
+    #rec558071395 .t-submit[data-btneffects-first],
+    #rec558071395 .t-submit[data-btneffects-second],
+    #rec558071395 .t-submit[data-btneffects-third] {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+    }
+
+    #rec558071395 .t-btn[data-btneffects-first="btneffects-ripple"] .t-btn_effects,
+    #rec558071395 .t-submit[data-btneffects-first="btneffects-ripple"] .t-btn_effects {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    #rec558071395 .t-btn[data-btneffects-first="btneffects-ripple"] .t-btn_effects::after,
+    #rec558071395 .t-submit[data-btneffects-first="btneffects-ripple"] .t-btn_effects::after {
+        content: '';
+        position: absolute;
+        height: 350%;
+        width: 200%;
+        top: 0;
+        left: -100%;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 100%;
+        -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+        transform: scale(0);
+        z-index: 20;
+        -webkit-animation-name: ripple;
+        animation-name: ripple;
+        -webkit-animation-duration: 6s;
+        animation-duration: 6s;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+    }
+
+    #rec558071395 .t-btn[data-btneffects-first="btneffects-ripple"] .t-btn_effects_md::after,
+    #rec558071395 .t-submit[data-btneffects-first="btneffects-ripple"] .t-btn_effects_md::after {
+        left: -130%;
+    }
+
+    #rec558071395 .t-btn[data-btneffects-first="btneffects-ripple"] .t-btn_effects_lg::after,
+    #rec558071395 .t-submit[data-btneffects-first="btneffects-ripple"] .t-btn_effects_lg::after {
+        left: -150%;
+    }
+
+    @-webkit-keyframes ripple {
+        20% {
+            opacity: 0;
+            -webkit-transform: scale(2.5);
+            transform: scale(2.5);
+        }
+        100% {
+            opacity: 0;
+            -webkit-transform: scale(2.5);
+            transform: scale(2.5);
+        }
+    }
+
+    @keyframes ripple {
+        20% {
+            opacity: 0;
+            -webkit-transform: scale(2.5);
+            transform: scale(2.5);
+        }
+        100% {
+            opacity: 0;
+            -webkit-transform: scale(2.5);
+            transform: scale(2.5);
+        }
+    }</style>
+
+    <style>@media (hover), (min-width: 0\0
+    ) {
+        #rec558071395 .t-btn:not(.t-animate_no-hover):hover {
+            color: #4c79ff !important;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.7) !important;
+        }
+
+        #rec558071395 .t-btn:not(.t-animate_no-hover) {
+            -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        #rec558071395 .t-btntext:not(.t-animate_no-hover):hover {
+            color: #4c79ff !important;
+        }
+    }</style>
+</div>
+<div id="rec558404814" class="r t-rec t-rec_pt_60 t-rec_pb_0 r_anim"
+     style="padding-top:60px;padding-bottom:0px; " data-record-type="128"><!-- T120 -->
+    <div class="t120">
+        <div class="t-container t-align_left">
+            <div class="t-col t-col_8 t-prefix_2">
+                <div class="t120__title t-heading t-heading_sm" field="title" style="">
+                    <div style="font-size: 30px;" data-customstyle="yes"><p style="text-align: center;">Наши
+                        гарантии</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="rec558403758" class="r t-rec" style=" " data-animationappear="off" data-record-type="603"><!-- t603-->
+    <div class="t603">
+        <div class="t603__container t-container_100">
+            <div class="t603__tile t603__tile_25" itemscope="" itemtype="http://schema.org/ImageObject">
+                <a href="germed_files/sert1.png">
+                    <div class="t603__blockimg t603__blockimg_4-3 t-bgimg t-zoomable"
+                         data-original="germed_files/sert1.png"
+                         bgimgfield="gi_img__0" data-zoom-target="0" data-zoomable="yes"
+                         data-img-zoom-url="germed_files/sert1.png"
+                         style="background: url(germed_files/sert1.png) center center no-repeat; background-size:cover;"
+                         data-lazy-rule="comm:resize,round:100">
+                        <meta itemprop="image"
+                              content="germed_files/sert1.png">
+                    </div>
+                </a>
+            </div>
+            <div class="t603__tile t603__tile_25" itemscope="" itemtype="http://schema.org/ImageObject">
+                <a href="germed_files/sert2.png">
+                    <div class="t603__blockimg t603__blockimg_4-3 t-bgimg t-zoomable"
+                         bgimgfield="gi_img__1" data-zoom-target="1" data-zoomable="yes"
+                         style="background: url(&#39;germed_files/sert2.png&#39;) center center no-repeat; background-size:cover;"
+                         data-lazy-rule="comm:resize,round:100">
+                    </div>
+                </a>
+            </div>
+            <div class="t603__tile t603__tile_25" itemscope="" itemtype="http://schema.org/ImageObject">
+                <a href="germed_files/sert3.png">
+                    <div class="t603__blockimg t603__blockimg_4-3 t-bgimg t-zoomable"
+                         bgimgfield="gi_img__2" data-zoom-target="2" data-zoomable="yes"
+                         style="background: url(germed_files/sert3.png) center center no-repeat; background-size:cover;"
+                         data-lazy-rule="comm:resize,round:100">
+                    </div>
+                </a>
+            </div>
+            <div class="t603__tile t603__tile_25" itemscope="" itemtype="http://schema.org/ImageObject">
+                <a href="germed_files/sert4.png">
+                    <div class="t603__blockimg t603__blockimg_4-3 t-bgimg t-zoomable"
+                         data-original="germed_files/sert4.png"
+                         bgimgfield="gi_img__3" data-zoom-target="3" data-zoomable="yes"
+                         data-img-zoom-url="germed_files/sert4.png"
+                         style="background: url(germed_files/sert4.png) center center no-repeat; background-size:cover;"
+                         data-lazy-rule="comm:resize,round:100">
+                    </div>
+                </a>
+            </div>
+            <div class="t603__tile t603__tile_25" itemscope="" itemtype="http://schema.org/ImageObject">
+                <a href="germed_files/sert5.png">
+                    <div class="t603__blockimg t603__blockimg_4-3 t-bgimg t-zoomable"
+                         data-original="germed_files/sert5.png"
+                         bgimgfield="gi_img__4" data-zoom-target="4" data-zoomable="yes"
+                         data-img-zoom-url="germed_files/sert5.png"
+                         style="background: url(germed_files/sert5.png) center center no-repeat; background-size:cover;"
+                         data-lazy-rule="comm:resize,round:100">
+                        <meta itemprop="image"
+                              content="germed_files/sert5.png">
+                    </div>
+                </a>
+            </div>
+            <div class="t603__tile t603__tile_25" itemscope="" itemtype="http://schema.org/ImageObject">
+                <a href="germed_files/sert6.png">
+                    <div class="t603__blockimg t603__blockimg_4-3 t-bgimg t-zoomable"
+                         data-original="germed_files/sert6.png"
+                         bgimgfield="gi_img__5" data-zoom-target="5" data-zoomable="yes"
+                         data-img-zoom-url="germed_files/sert6.png"
+                         style="background: url(germed_files/sert6.png) center center no-repeat; background-size:cover;"
+                         data-lazy-rule="comm:resize,round:100">
+                        <meta itemprop="image"
+                              content="germed_files/sert6.png">
+                    </div>
+                </a>
+            </div>
+            <div class="t603__tile t603__tile_25" itemscope="" itemtype="http://schema.org/ImageObject">
+                <a href="germed_files/sert7.png">
+                    <div class="t603__blockimg t603__blockimg_4-3 t-bgimg t-zoomable"
+                         data-original="germed_files/sert7.png"
+                         bgimgfield="gi_img__6" data-zoom-target="6" data-zoomable="yes"
+                         data-img-zoom-url="germed_files/sert7.png"
+                         style="background: url(germed_files/sert7.png) center center no-repeat; background-size:cover;"
+                         data-lazy-rule="comm:resize,round:100">
+                        <meta itemprop="image"
+                              content="germed_files/sert7.png">
+                    </div>
+                </a>
+            </div>
+            <div class="t603__tile t603__tile_25" itemscope="" itemtype="http://schema.org/ImageObject">
+                <a href="germed_files/sert8.png">
+                    <div class="t603__blockimg t603__blockimg_4-3 t-bgimg t-zoomable"
+                         data-original="germed_files/sert8.png"
+                         bgimgfield="gi_img__7" data-zoom-target="7" data-zoomable="yes"
+                         data-img-zoom-url="germed_files/sert8.png"
+                         style="background: url(germed_files/sert8.png) center center no-repeat; background-size:cover;"
+                         data-lazy-rule="comm:resize,round:100">
+                        <meta itemprop="image"
+                              content="germed_files/sert8.png">
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <style></style>
+</div>
+<div class="modal fade bd-example-modal-lg" id="modal1" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <pre style="padding: 3em;"><h5>Врач-стоматолог Мальчевская Юлия Сергеевна</h5>
+
+врач-стоматолог Мальчевская Юлия СергеевнаСведения об образовании: СПбГМУ им ак.И.П.Павлова 1998 г.
+Специальность: врач-стоматолог
+Специализация: ортопедическая стоматология
+
+<h4>Курсы повышения квалификации:</h4>
+
+1. Медикаметозное лечение кист и гранулем
+2. Методы пломбирования корневых каналов различными методиками
+3. Эстетическая реставрация коронковой части зуба
+4. Восстановление зуба при разрушении под десну с использованием различных штифтов
+5. Изготовление вкладок (культевых, разборных) из различных материалов
+6. Изготовление единичных коронок и мостовидных протезов
+7. Виниринг
+8. Изготовление сьемных протезов (бюгельных, нейлоновых, акриловых, безакриловых)
+</pre>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="modal2" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <pre style="padding: 3em;"><h3>врач-стоматолог Васильева Мария Сергеевна</h3>
+<h5>Образование:</h5>
+
+В 1998 году окончила Первый Санкт-Петербургский медицинский университет имени академика И.П. Павлова по специальности «Стоматология»
+В 1999 году закончила интернатуру по стоматологии в Первом Санкт-Петербургском медицинском университете имени академика И.П. Павлова
+
+
+<h5>Действующие сертификаты:</h5>
+
+-терапевтическая стоматология, 30.10.2020
+-детская стоматология, 11.05.2018
+
+
+<h5>Курсы повышения квалификации:</h5>
+
+-«Стоматолог и операционный микроскоп. Использование в повседневной практике, лайфхаки и расширение кругозора», А. М. Тенишева
+-«Оптимизация инструментальной обработки корневых каналов», Т. В. Шорина
+-«Эффективные ручные и машинные технологии в эндодонтии, гарантирующие успех. Как быстро овладеть технологиями и избежать ошибок», Н. М. Батюков
+-«Основные аспекты современного эндодонтического лечения», Ж. П. Хиора
+-«Комплексный подход к лечению травмы зубов»
+-«Волоконное армирование в клинической практике — мостовидные, шинирующие и штифтовые конструкции»
+-Достижение успеха в применении армирующих систем: вопросы и ответы«, О. В. Прохорова
+-«От глубин эндодонтии к вершинам реставрации», А. Зорян, И. Толмачев
+-«Реставрация зубов от апекса до коронки», Л. Г. Аюпова
+-«Клинические особенности лечения временных зубов», И. В. Кобиясова
+-«Клинические особенности лечения постоянных зубов у детей и подростков», И. В. Кобиясова
+-«Реставрация временных зубов после эндодонтического лечения с использованием стандартных металлических коронок», Н. А. Савушкина
+
+</pre>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="modal3" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <pre style="padding: 3em;">
+<h3>врач-стоматолог Шаповалова Татьяна Владимировна</h3>
+
+Сведения об образовании: с 2000-2005 гг. СПбГМУ им ак.И.П.Павлова
+Специальность: врач-стоматолог
+Специализация: терапевтическая стоматология
+Общий медицинский стаж: 10 лет
+
+<h5>Сертификаты:</h5>
+
+-Специализация по терапевтической стоматологии на базе Военно-медицинской академии (2006)
+-Современные принципы диагностики и лечения заболеваний пародонта (2007)
+-Современные аспекты в клинической эндодонтии и пост-эндодонтичнской реставрации зубов при обширных повреждениях тканей (2008)
+-Микро-инвазивная терапия поверхностного кариеса на аппроксимальных и гладких поверхностях зубов по системе «Icon-Infiltration concept» (2012)
+
+<h5>На базе стоматологической клиники «Гермед» оказывает услуги:</h5>
+
+-лечение кариеса и его осложнений
+-эстетико-функциональная реставрация
+-лечение кариеса без боли и сверления по системе «Icon»
+-снятие зубных отложений, профессиональная гигиена полости рта
+-различные виды фторирования
+-герметизация фиссур молочных и постоянных зубов
+-обучение детей и взрослых правилам гигиены
+-подбор индивидуальных средств гигиены
+-серебрение молочных зубов
+</pre>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="modal4" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+           <pre style="padding: 3em;">
+<h3>Сабич Марина Николаевна</h3>
+
+<h5>Образование:</h5>
+
+СПГМУ им.академика И.П.Павлова в 1990 году.
+
+
+<h5>Курсы повышения квалификации:</h5>
+
+СПГМУ им.академика И.П. Павлова в  2012 году.
+врач-высшей категории.
+
+</pre>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="modal5" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <pre style="padding: 3em;">
+<h3>Журавлёва Наталья Юрьевна</h3>
+
+
+<h4>Образование:</h4>
+
+СПГМУ им.академика И.П.Павлова
+</pre>
+        </div>
+    </div>
+</div>
+<div class="modal fade bd-example-modal-lg" id="modal6" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <pre style="padding: 3em;">
+<h3></h3>
+
+<h5>Сертификаты:</h5>
+
+
+<h5>На базе стоматологической клиники «Гермед» оказывает услуги:</h5>
+
+</pre>
+        </div>
+    </div>
+</div>
+<div id="rec558575064" class="r t-rec t-rec_pt_45 t-rec_pb_150"
+     style="padding-top:45px;padding-bottom:150px;background-color:#efefef; " data-animationappear="off"
+     data-record-type="923" data-bg-color="#efefef"><!-- t923 -->
+    <div class="t923 ">
+        <div class="t-section__container t-container">
+            <div class="t-col t-col_12">
+                <div class="t-section__topwrapper t-align_center">
+                    <a name="doctors"></a>
+                    <div class="t-section__title t-title t-title_xs" field="btitle">Все услуги оказывают<br>врачи-профессионалы
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="itc-slider" data-autoplay="false" data-interval="10" data-loop="true" data-refresh="true"
+                 data-slider="itc-slider">
+
+                <div class="itc-slider__wrapper" style="margin-left: 60px">
+                    <div class="itc-slider__items">
+                        <div class="itc-slider__item"><!-- Начало 1 слайда -->
+                            <div class="card" style="width: 18rem">
+                                <img class="card-img-top" src="germed_files/malchevskaya.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h6 class="card-title">Мальчевская Юлия Сергеевна</h6>
+                                    <p class="card-text c_elem">врач-стомотолог, терапевт, ортопед</p>
+                                    <button type="button" class="btn btn-dark c_elem" data-toggle="modal"
+                                            data-target="#modal1" style="vertical-align: bottom">О враче
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div> <!-- Конец 1 слайда -->
+                        <div class="itc-slider__item"><!-- Начало 2 слайда -->
+                            <div class="card" style="width: 18rem">
+                                <img class="card-img-top" src="germed_files/vasileva.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h6 class="card-title">Васильева Мария Сергеевна</h6>
+                                    <p class="card-text c_elem">врач-стомотолог, терапевт, детский стомотолог</p>
+                                    <button type="button" class="btn btn-dark c_elem" data-toggle="modal"
+                                            data-target="#modal2" style="vertical-align: bottom">О враче
+                                    </button>
+                                </div>
+                            </div>
+                        </div> <!-- Конец 2 слайда -->
+                        <div class="itc-slider__item"><!-- Начало 3 слайда -->
+                            <div class="card" style="width: 18rem">
+                                <img class="card-img-top" src="germed_files/malchevskaya.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h6 class="card-title">Шаповалова Татьяна Владимировна</h6>
+                                    <p class="card-text c_elem">врач-стомотолог, терапевт</p>
+                                    <button type="button" class="btn btn-dark c_elem" data-toggle="modal"
+                                            data-target="#modal3" style="vertical-align: bottom">О враче
+                                    </button>
+                                </div>
+                            </div>
+                        </div> <!-- Конец 3 слайда -->
+                        <div class="itc-slider__item"><!-- Начало 4 слайда -->
+                            <div class="card" style="width: 18rem">
+                                <img class="card-img-top" src="germed_files/sabich.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h6 class="card-title">Сабич Марина Николаевна</h6>
+                                    <p class="card-text c_elem">врач-стомотолог, терапевт</p>
+                                    <button type="button" class="btn btn-dark c_elem" data-toggle="modal"
+                                            data-target="#modal4" style="vertical-align: bottom">О враче
+                                    </button>
+                                </div>
+                            </div>
+                        </div> <!-- Конец 4 слайда -->
+                        <div class="itc-slider__item"><!-- Начало 5 слайда -->
+                            <div class="card" style="width: 18rem">
+                                <img class="card-img-top" src="germed_files/zhuravleva.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h6 class="card-title">Журавлёва Наталья Юрьевна</h6>
+                                    <p class="card-text c_elem">врач-стомотолог, терапевт</p>
+                                    <button type="button" class="btn btn-dark c_elem" data-toggle="modal"
+                                            data-target="#modal5" style="vertical-align: bottom">О враче
+                                    </button>
+                                </div>
+                            </div>
+                        </div> <!-- Конец 5 слайда -->
+                        <div class="itc-slider__item"><!-- Начало 6 слайда -->
+                            <div class="card" style="width: 18rem">
+                                <img class="card-img-top" src="germed_files/dolgaya.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <h6 class="card-title">Долгая Юлия Валериевна</h6>
+                                    <p class="card-text c_elem">врач-стомотолог, терапевт, хирург</p>
+                                    <button type="button" class="btn btn-dark c_elem" data-toggle="modal"
+                                            data-target="#modal6" style="vertical-align: bottom">О враче
+                                    </button>
+                                </div>
+                            </div>
+                        </div> <!-- Конец 6 слайда -->
+                    </div>
+                </div>
+<button class="itc-slider__btn itc-slider__btn_prev"></button>
+                <button class="itc-slider__btn itc-slider__btn_next"></button>
+                <ol class="itc-slider__indicators">
+                    <li class="itc-slider__indicator" data-slide-to="0"></li>
+                    <li class="itc-slider__indicator" data-slide-to="1"></li>
+                    <li class="itc-slider__indicator" data-slide-to="2"></li>
+                    <li class="itc-slider__indicator" data-slide-to="3"></li>
+                    <li class="itc-slider__indicator" data-slide-to="4"></li>
+                    <li class="itc-slider__indicator" data-slide-to="5"></li>
+                </ol>
+            </div>
+        </div>
+
+        <style>#rec558575064 .t-slds__bullet_active .t-slds__bullet_body {
+            background-color: #222 !important;
+        }
+
+        #rec558575064 .t-slds__bullet:hover .t-slds__bullet_body {
+            background-color: #222 !important;
+        }</style>
+    </div>
+    <!--[if (IE 8)|(IE 9)]>
+    <style>#rec558575064 .t923__slds-wrapper .t923__col {
+        display: block;
+        margin: 0 auto;
+        float: none;
+    }</style><![endif]-->
+
+</div>
+<div id="rec558428842" class="r t-rec" style="opacity: 1;" data-animationappear="off" data-record-type="868">
+    <!-- t868 -->
+    <div class="t868">
+        <div class="t-popup" data-tooltip-hook="#popup:embedcode" role="dialog" aria-modal="true" tabindex="-1"
+             data-popup-inited="yes">
+            <div class="t-popup__container t-width t-width_10">
+                <div class="t868__code-wrap">
+
+    			<pre style="padding: 3em;"><h1>врач-стоматолог Мальчевская Юлия Сергеевна</h1>
+
+врач-стоматолог Мальчевская Юлия СергеевнаСведения об образовании: СПбГМУ им ак.И.П.Павлова 1998 г.
+Специальность: врач-стоматолог
+Специализация: ортопедическая стоматология
+
+<h3>Курсы повышения квалификации:</h3>
+
+1. Медикамнетозное лечение кист и гранулем
+2. Методы пломбирования корневых каналов различными методиками
+3. Эстетическая реставрация коронковой части зуба
+4. Восстановление зуба при разрушении под десну с использованием различных штифтов
+5. Изготовление вкладок (культевых, разборных) из различных материалов
+6. Изготовление единичных коронок и мостовидных протезов
+7. Виниринг
+8. Изготовление съемных протезов (бюгельных, нейлоновых, акриловых, безакриловых)
+9. В работе придерживается принципа диалога с пациентом,чтобы достичь лучшего результата, а так же лучшего и возможного соотношения цена-качество.
+</pre>
+
+                </div>
+            </div>
+            <div class="t-popup__close t-popup__block-close">
+                <button type="button" class="t-popup__close-wrapper t-popup__block-close-button"
+                        aria-label="Закрыть диалог">
+                    <svg role="presentation" class="t-popup__close-icon" width="23px" height="23px"
+                         viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g stroke="none" stroke-width="1" fill="#fff" fill-rule="evenodd">
+                            <rect transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                            <rect transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="rec558431865" class="r t-rec" style="opacity: 1;" data-animationappear="off" data-record-type="868">
+    <!-- t868 -->
+    <div class="t868">
+        <div class="t-popup" data-tooltip-hook="#popup:embedcode2" role="dialog" aria-modal="true" tabindex="-1"
+             data-popup-inited="yes">
+            <div class="t-popup__container t-width t-width_10">
+                <div class="t868__code-wrap">
+
+    			<pre style="padding: 3em;"><h1>врач-стоматолог Васильева Мария Сергеевна</h1>
+<h3>Образование:</h3>
+
+В 1998 году окончила Первый Санкт-Петербургский медицинский университет имени академика И.П. Павлова по специальности «Стоматология»
+В 1999 году закончила интернатуру по стоматологии в Первом Санкт-Петербургском медицинском университете имени академика И.П. Павлова
+
+
+<h3>Действующие сертификаты:</h3>
+
+-терапевтическая стоматология, 30.10.2020
+-детская стоматология, 11.05.2018
+
+
+<h3>Курсы повышения квалификации:</h3>
+
+-«Стоматолог и операционный микроскоп. Использование в повседневной практике, лайфхаки и расширение кругозора», А. М. Тенишева
+-«Оптимизация инструментальной обработки корневых каналов», Т. В. Шорина
+-«Эффективные ручные и машинные технологии в эндодонтии, гарантирующие успех. Как быстро овладеть технологиями и избежать ошибок», Н. М. Батюков
+-«Основные аспекты современного эндодонтического лечения», Ж. П. Хиора
+-«Комплексный подход к лечению травмы зубов»
+-«Волоконное армирование в клинической практике — мостовидные, шинирующие и штифтовые конструкции»
+-Достижение успеха в применении армирующих систем: вопросы и ответы«, О. В. Прохорова
+-«От глубин эндодонтии к вершинам реставрации», А. Зорян, И. Толмачев
+-«Реставрация зубов от апекса до коронки», Л. Г. Аюпова
+-«Клинические особенности лечения временных зубов», И. В. Кобиясова
+-«Клинические особенности лечения постоянных зубов у детей и подростков», И. В. Кобиясова
+-«Реставрация временных зубов после эндодонтического лечения с использованием стандартных металлических коронок», Н. А. Савушкина
+
+</pre>
+
+                </div>
+            </div>
+            <div class="t-popup__close t-popup__block-close">
+                <button type="button" class="t-popup__close-wrapper t-popup__block-close-button"
+                        aria-label="Закрыть диалог">
+                    <svg role="presentation" class="t-popup__close-icon" width="23px" height="23px"
+                         viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g stroke="none" stroke-width="1" fill="#fff" fill-rule="evenodd">
+                            <rect transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                            <rect transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="rec558439798" class="r t-rec" style="opacity: 1;" data-animationappear="off" data-record-type="868">
+    <!-- t868 -->
+    <div class="t868">
+        <div class="t-popup" data-tooltip-hook="#popup:embedcode3" role="dialog" aria-modal="true" tabindex="-1"
+             data-popup-inited="yes">
+            <div class="t-popup__container t-width t-width_10">
+                <div class="t868__code-wrap">
+
+    			<pre style="padding: 3em;"><h1>врач-стоматолог Шаповалова Татьяна Владимировна</h1>
+    
+Сведения об образовании: с 2000-2005 гг. СПбГМУ им ак.И.П.Павлова
+Специальность: врач-стоматолог
+Специализация: терапевтическая стоматология
+Общий медицинский стаж: 10 лет
+
+<h3>Сертификаты:</h3>
+
+-Специализация по терапевтической стоматологии на базе Военно-медицинской академии (2006)
+-Современные принципы диагностики и лечения заболеваний пародонта (2007)
+-Современные аспекты в клинической эндодонтии и пост-эндодонтичнской реставрации зубов при обширных повреждениях тканей (2008)
+-Микро-инвазивная терапия поверхностного кариеса на аппроксимальных и гладких поверхностях зубов по системе «Icon-Infiltration concept» (2012)
+
+<h3>На базе стоматологической клиники «Гермед» оказывает услуги:</h3>
+
+-лечение кариеса и его осложнений
+-эстетико-функциональная реставрация
+-лечение кариеса без боли и сверления по системе «Icon»
+-снятие зубных отложений, профессиональная гигиена полости рта
+-различные виды фторирования
+-герметизация фиссур молочных и постоянных зубов
+-обучение детей и взрослых правилам гигиены
+-подбор индивидуальных средств гигиены
+-серебрение молочных зубов
+</pre>
+
+                </div>
+            </div>
+            <div class="t-popup__close t-popup__block-close">
+                <button type="button" class="t-popup__close-wrapper t-popup__block-close-button"
+                        aria-label="Закрыть диалог">
+                    <svg role="presentation" class="t-popup__close-icon" width="23px" height="23px"
+                         viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g stroke="none" stroke-width="1" fill="#fff" fill-rule="evenodd">
+                            <rect transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                            <rect transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="rec558442296" class="r t-rec" style="opacity: 1;" data-animationappear="off" data-record-type="868">
+    <!-- t868 -->
+    <div class="t868">
+        <div class="t-popup" data-tooltip-hook="#popup:embedcode5" role="dialog" aria-modal="true" tabindex="-1"
+             data-popup-inited="yes">
+            <div class="t-popup__container t-width t-width_10">
+                <div class="t868__code-wrap">
+
+    			<pre style="padding: 3em;"><h1>Сабич Марина Николаевна</h1>
+
+<h3>Образование:</h3>
+
+СПГМУ им.академика И.П.Павлова в 1990 году.
+
+
+<h3>Курсы повышения квалификации:</h3>
+
+СПГМУ им.академика И.П. Павлова в  2012 году.
+Врач высшей категории.
+
+</pre>
+
+                </div>
+            </div>
+            <div class="t-popup__close t-popup__block-close">
+                <button type="button" class="t-popup__close-wrapper t-popup__block-close-button"
+                        aria-label="Закрыть диалог">
+                    <svg role="presentation" class="t-popup__close-icon" width="23px" height="23px"
+                         viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g stroke="none" stroke-width="1" fill="#fff" fill-rule="evenodd">
+                            <rect transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                            <rect transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="rec558442639" class="r t-rec" style="opacity: 1;" data-animationappear="off" data-record-type="868">
+    <!-- t868 -->
+    <div class="t868">
+        <div class="t-popup" data-tooltip-hook="#popup:embedcode4" role="dialog" aria-modal="true" tabindex="-1"
+             data-popup-inited="yes">
+            <div class="t-popup__container t-width t-width_10">
+                <div class="t868__code-wrap">
+
+    			<pre style="padding: 3em;"><h1>Журавлёва Наталья Юрьевна</h1>
+
+
+<h3>Образование:</h3>
+
+СПГМУ им.академика И.П.Павлова
+</pre>
+
+                </div>
+            </div>
+            <div class="t-popup__close t-popup__block-close">
+                <button type="button" class="t-popup__close-wrapper t-popup__block-close-button"
+                        aria-label="Закрыть диалог">
+                    <svg role="presentation" class="t-popup__close-icon" width="23px" height="23px"
+                         viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g stroke="none" stroke-width="1" fill="#fff" fill-rule="evenodd">
+                            <rect transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                            <rect transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="rec558442649" class="r t-rec" style="opacity: 1;" data-animationappear="off" data-record-type="868">
+    <!-- t868 -->
+    <div class="t868">
+        <div class="t-popup" data-tooltip-hook="#popup:embedcode6" role="dialog" aria-modal="true" tabindex="-1"
+             data-popup-inited="yes">
+            <div class="t-popup__container t-width t-width_10">
+                <div class="t868__code-wrap">
+
+    			<pre style="padding: 3em;"><h1></h1>
+    
+<h3>Сертификаты:</h3>
+
+
+<h3>На базе стоматологической клиники «Гермед» оказывает услуги:</h3>
+
+</pre>
+
+                </div>
+            </div>
+            <div class="t-popup__close t-popup__block-close">
+                <button type="button" class="t-popup__close-wrapper t-popup__block-close-button"
+                        aria-label="Закрыть диалог">
+                    <svg role="presentation" class="t-popup__close-icon" width="23px" height="23px"
+                         viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g stroke="none" stroke-width="1" fill="#fff" fill-rule="evenodd">
+                            <rect transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                            <rect transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="rec558442668" class="r t-rec" style="opacity: 1;" data-animationappear="off" data-record-type="868">
+    <!-- t868 -->
+    <div class="t868">
+        <div class="t-popup" data-tooltip-hook="#popup:embedcode7" role="dialog" aria-modal="true" tabindex="-1"
+             data-popup-inited="yes">
+            <div class="t-popup__container t-width t-width_10">
+                <div class="t868__code-wrap">
+
+    			<pre style="padding: 3em;"><h1></h1>
+    
+<h3>Сертификаты:</h3>
+
+
+<h3>На базе стоматологической клиники «Гермед» оказывает услуги:</h3>
+
+</pre>
+
+                </div>
+            </div>
+            <div class="t-popup__close t-popup__block-close">
+                <button type="button" class="t-popup__close-wrapper t-popup__block-close-button"
+                        aria-label="Закрыть диалог">
+                    <svg role="presentation" class="t-popup__close-icon" width="23px" height="23px"
+                         viewBox="0 0 23 23" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <g stroke="none" stroke-width="1" fill="#fff" fill-rule="evenodd">
+                            <rect transform="translate(11.313708, 11.313708) rotate(-45.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                            <rect transform="translate(11.313708, 11.313708) rotate(-315.000000) translate(-11.313708, -11.313708) "
+                                  x="10.3137085" y="-3.6862915" width="2" height="30"></rect>
+                        </g>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="map_content" style="display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas: 'map_tips map';
+                    padding-left: 25px">
+    <div id="map"
+         style="min-width: 400px; height: 500px; grid-area: map;"></div>
+    <div id="map_tips" style="min-width: 400px; height: 500px;grid-area: map_tips;">
+        <div class="contacts__content" style="padding: 25px">
+            <h2 class="h2">
+                Клиника Гермед
+            </h2>
+            <div class="contacts__wrapper">
+                <div class="contacts__phone">
+                    <a href="tel:+7 (999) 061-92-22" class="phone nobr">
+                        +7 (999) 061-92-22
+                    </a>
+                    <div class="work-time active">
+                        <span>с&nbsp;09:00&nbsp;21:00</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="affiliates-item">
+                    <div class="affiliates-item-metro">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" viewBox="0 0 2e7 1.508e7">
+                            <path style="fill: #ff0000;"
+                                  d="m6026765 2907127c-299804-1015676-1113594-904356-1.67e6 -431300-1370626 1266075-3155291 3923495-2013094 7.75e6 956578 3241739 4936901 5314839 4936901 5314839h-4.64e6s-2395828-2685264-2.61e6 -5843500c-271260-3993020 1327930-6511332 3183988-8153020 1741824-1544365 3398006-2003480 3398006-2003480l3387831 1.11e7 3387831-1.11e7s1656182 459116 3398006 2003480c1856058 1641687 3455248 4.16e6 3183988 8153020-214173 3158236-2.61e6 5843500-2.61e6 5843500h-4.64e6s3.98e6 -2073100 4936900-5314839c1142197-3826069-642468-6483489-2013094-7.75e6 -556826-473056-1370617-584376-1.67e6 431300-1027971 3241740-3973210 1.253e7 -3973210 1.253e7s-2945239-9291363-3973210-1.253e7z"/>
+                        </svg>
+
+                        <p>
+                            от м.&nbsp;Лесная
+
+                        </p>
+                    </div>
+
+                    <p>
+                        Автобус 237 до остановки Лабораторный проспект 25
+                    </p>
+
+                </div>
+<br>
+                <div class="affiliates-item">
+                    <div class="affiliates-item-metro">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" viewBox="0 0 2e7 1.508e7">
+                            <path style="fill: #ff0000;"
+                                  d="m6026765 2907127c-299804-1015676-1113594-904356-1.67e6 -431300-1370626 1266075-3155291 3923495-2013094 7.75e6 956578 3241739 4936901 5314839 4936901 5314839h-4.64e6s-2395828-2685264-2.61e6 -5843500c-271260-3993020 1327930-6511332 3183988-8153020 1741824-1544365 3398006-2003480 3398006-2003480l3387831 1.11e7 3387831-1.11e7s1656182 459116 3398006 2003480c1856058 1641687 3455248 4.16e6 3183988 8153020-214173 3158236-2.61e6 5843500-2.61e6 5843500h-4.64e6s3.98e6 -2073100 4936900-5314839c1142197-3826069-642468-6483489-2013094-7.75e6 -556826-473056-1370617-584376-1.67e6 431300-1027971 3241740-3973210 1.253e7 -3973210 1.253e7s-2945239-9291363-3973210-1.253e7z"/>
+                        </svg>
+                        <p>
+                            от м.&nbsp;Площадь Мужества
+                        </p>
+                    </div>
+                    <p class="affiliates-item-address">
+                        Автобус 222 до остановки Лабораторный проспект 25
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="rec558071398" class="r t-rec t-rec_pt_165 t-rec_pb_210"
+     style="padding-top:165px;padding-bottom:210px;background-color:#f5f5f5; " data-record-type="525"
+     data-bg-color="#f5f5f5" data-animationappear="off"><!-- t525 -->
+    <div class="t525">
+        <div class="t-section__container t-container">
+            <div class="t-col t-col_12">
+                <div class="t-section__topwrapper t-align_center">
+                    <a name="reviews"></a>
+                    <div class="t-section__title t-title t-title_xs" field="btitle">Отзывы наших клиентов</div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 100%; max-width:560px;height:800px;overflow:hidden;position:relative; margin-left: auto; margin-right: auto">
+            <iframe style="width:100%;height:100%;border:1px solid #e6e6e6;border-radius:8px;box-sizing:border-box"
+                    src="https://yandex.ru/maps-reviews-widget/1108761231?comments"></iframe>
+            <a href="https://yandex.ru/maps/org/stomatologiya/1108761231/" target="_blank"
+               style="box-sizing:border-box;text-decoration:none;color:#b3b3b3;font-size:10px;font-family:YS Text,sans-serif;padding:0 20px;position:absolute;bottom:8px;width:100%;text-align:center;left:0;overflow:hidden;text-overflow:ellipsis;display:block;max-height:14px;white-space:nowrap;padding:0 16px;box-sizing:border-box">Стоматология
+                на карте Санкт‑Петербурга — Яндекс Карты</a></div>
+    </div>
+    <style>.t-review-social-links {
+        line-height: 0px;
+    }
+
+    .t-review-social-links__wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        width: auto;
+    }
+
+    .t-review-social-links {
+        margin-top: 15px;
+    }
+
+    .t-review-social-links__item {
+        padding: 0px 4px;
+    }
+
+    .t-review-social-links__item svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .t-review-social-links__wrapper_round .t-review-social-links__item svg {
+        width: 23px;
+        height: 23px;
+    }
+
+    .t-review-social-links__item:first-child {
+        padding-left: 0px;
+    }
+
+    @media (max-width: 560px) {
+        .itc-slider__btn{
+            visibility: hidden;
+        }
+    }
+    @media (max-width: 560px) {
+        .container{
+            margin: 0;
+            padding: 0;
+        }
+        .itc-slider{
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        .t-review-social-links {
+            margin-top: 13px;
+        }
+
+        .t-review-social-links__item {
+            padding: 0px 3px;
+        }
+
+        .t-review-social-links__item svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        .t-review-social-links__wrapper_round .t-review-social-links__item svg {
+            width: 20px;
+            height: 20px;
+        }
+    }</style>
+    <style>@media screen and (max-width: 640px) {
+        .t525 .t-review-social-links__wrapper {
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+        }
+    }</style>
+</div>
+<div id="rec558071399" class="r t-rec r_hidden r_anim" style=" " data-record-type="215"><a name="form"
+                                                                                           style="font-size:0;"></a>
+</div>
+<div id="rec558071401" class="r t-rec r_hidden r_anim" style=" " data-record-type="215"><a name="contacts"
+                                                                                           style="font-size:0;"></a>
+</div>
+<div id="rec558071403" class="r t-rec r_hidden r_anim" style=" " data-record-type="394">
+    <style>#allrecords .t-text a,
+    #allrecords .t-descr a,
+    #allrecords .t-heading a,
+    #allrecords .t-title a,
+    #allrecords .t-impact-text a,
+    #allrecords .t-text-impact a,
+    #allrecords .t-name:not(.t-feed__parts-switch-btn) a:not(.t794__typo):not(.t-menusub__link-item):not(.t-cards__link),
+    #allrecords .t-uptitle a {
+        color: inherit;
+        font-weight: inherit;
+        border-bottom: 2px solid #f5914f;
+        -webkit-box-shadow: inset 0px -1px 0px 0px #f5914f;
+        -moz-box-shadow: inset 0px -1px 0px 0px #f5914f;
+        box-shadow: inset 0px -1px 0px 0px #f5914f;
+    }</style>
+</div>
+
+<div class="btn-up btn-up_hide"></div>
+
+<script src="germed_files/btn-up.js"></script>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</html>
